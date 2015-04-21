@@ -10,33 +10,69 @@ namespace TextStatsLambda_DigitalRoot
     {
         static void Main(string[] args)
         {
+            Console.ReadKey();
 
         }
 
         public static int DigitalRoot(string rootThisNumber)
         {
-            return 0;
-        }
+            {
 
+                List<int> digits = new List<int>();
+
+                string currentNumber = rootThisNumber;
+
+                while (currentNumber.Length > 1)
+                {
+
+                    int counter = 0;
+
+
+                    for (int i = 0; i < currentNumber.Length; i++)
+                    {
+
+                        digits.Add(Convert.ToInt32(currentNumber[i].ToString()));
+                    }
+
+                    foreach (var item in digits)
+                    {
+
+                        counter += item;
+                    }
+
+                    currentNumber = counter.ToString();
+
+                    digits.Clear();
+                }
+
+                int digitalRoot = Convert.ToInt32(currentNumber);
+
+                Console.WriteLine("Input: " + rootThisNumber);
+                Console.WriteLine("Output: " + digitalRoot);
+
+                return digitalRoot;
+            }
+        }
         public static int NumberOfWords(string inputString)
         {
-            return 0;
+            return inputString.Split(' ').ToList().Count;
+
         }
 
         public static int NumberOfVowels(string inputString)
         {
-            return 0;
+            return inputString.ToLower().Count(x => ("aeiou").Contains(x));
         }
 
         public static int NumberOfConsonants(string inputString)
         {
-            return 0;
+            return inputString.ToLower().Count(x => ("bcdfghjklmnpqrstvwxyz").Contains(x));
         }
 
         public static int NumberOfSpecialCharacters(string inputString)
         {
             // .,?;'!@#$%^&*() and spaces are considered special characters
-            return 0;
+            return inputString.Count(x => (" .,?;'!@#$%^&*()").Contains(x));
         }
 
         public static string LongestWord(string inputString)
